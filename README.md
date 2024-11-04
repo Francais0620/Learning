@@ -8,6 +8,6 @@ My learning notes
   此处可以和`Rpackages`和`../Pipelines/`中的文件存在交叉引用。
 * mathematics文件夹
   关于数学的学习笔记。从11.4开始，开始集中学习线性代数等数学基本知识。
-* 机器学习
+* machine learning文件夹
   关于机器学习常见算法的学习笔记。
   
