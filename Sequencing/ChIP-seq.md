@@ -57,8 +57,7 @@ b. 非冗余的读段的数目：去除重复的测序读数后，剩下的唯�
 | | |``|format conversion|
 |bamcoverage|Step:normalization|`bamCoverage -p $nThread -b bam/${sample}.rmdup.bam --skipNAs --normalizeUsing CPM -o bw/${sample}.CPM.bw`| processing |
 |MACS |Step6:call peak |`macs2 callpeak -t <sample>._sort.bam -c <sample>._sort.bam` | processing|
-|computeMatrix|scale|`computeMatrix scale-regions -S <sample1>.bw  input.<sample2>.bw -R <overlap>.bed -a 1000 -b 1000 -o ip_input.computeMatrix`
-`computeMatrix reference-point --referencePoint center -b <sample>.bed -S <sample>.bw <sample>.bw  --skipZeros -o <sample>.gz --outFileNameMatrix <sample>`|compute|
+|computeMatrix|scale|`computeMatrix scale-regions -S <sample1>.bw  input.<sample2>.bw -R <overlap>.bed -a 1000 -b 1000 -o ip_input.computeMatrix`  `computeMatrix reference-point --referencePoint center -b <sample>.bed -S <sample>.bw <sample>.bw  --skipZeros -o <sample>.gz --outFileNameMatrix <sample>`|compute|
 |plotHeatmap||||
 |plotProfile||||
 
