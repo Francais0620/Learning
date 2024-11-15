@@ -38,9 +38,32 @@ b. 非冗余的读段的数目：去除重复的测序读数后，剩下的唯�
 
 #### （4）The normalized strand coefficient（NSC）
 
-
-
-
 #### （5）Background uniformity（Bu）
 
 #### （6）GC summit bias
+
+
+### 2. pipeline
+
+
+| Software     | Description | Code    | notes | 
+|----|----|----|---- |
+| prefetch      |Step1:prefetch .sra files from database       | `prefetch XXX`   | download |
+| fastq-dump   |Step2:split files from .sra files        | `fastq-dump XXX`      | download|
+| trim_galore        |Step3:filtering          | `trim_galore --fastqc --three_prime_clip_R1 4  -o ./0-clean_data/ SRR14104347/SRR14104347.fastq.gz` | preprocessing |
+| bowtie2 |Step4:alignment |` `|preprocessing |
+|gatk |Step5:revome duplicates |` ` | preprocessing|
+|samtools |Step5:revome duplicates |`samtools rmdup` | preprocessing|
+|||``| |
+
+
+
+
+
+
+
+
+
+
+
+
