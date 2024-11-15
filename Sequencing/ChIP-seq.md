@@ -51,11 +51,16 @@ b. 非冗余的读段的数目：去除重复的测序读数后，剩下的唯�
 | prefetch      |Step1:prefetch .sra files from database       | `prefetch XXX`   | download |
 | fastq-dump   |Step2:split files from .sra files        | `fastq-dump XXX`      | download|
 | trim_galore        |Step3:filtering          | `trim_galore --fastqc --three_prime_clip_R1 4  -o ./0-clean_data/ SRR14104347/SRR14104347.fastq.gz` | preprocessing |
-| bowtie2 |Step4:alignment |` `|preprocessing |
+| bowtie2 |Step4:alignment |`bowtie2 -x /home/xxzhang/Resource/Reference/Genome/homo_sapiens/hg38/bowtie2/hg38_dm6 -p 30 -U "/home/xxzhang/workplace/project/CRISPRa/chip_seq/0-clean_data/SRR14104347_trimmed.fq.gz" >./0-align/SRR14104347.aligned.sam `|preprocessing |
 |gatk |Step5:revome duplicates |` ` | preprocessing|
 |samtools |Step5:revome duplicates |`samtools rmdup` | preprocessing|
-|||``| |
-
+| | |``|format conversion|
+|bamcoverage|Step:normalization|`bamCoverage -p $nThread -b bam/${sample}.rmdup.bam --skipNAs --normalizeUsing CPM -o bw/${sample}.CPM.bw`| processing |
+|MACS |Step6:call peak |`macs2 callpeak -t <sample>._sort.bam -c <sample>._sort.bam` | processing|
+|computeMatrix|scale|`computeMatrix scale-regions -S <sample1>.bw  input.<sample2>.bw -R <overlap>.bed -a 1000 -b 1000 -o ip_input.computeMatrix`
+`computeMatrix reference-point --referencePoint center -b <sample>.bed -S <sample>.bw <sample>.bw  --skipZeros -o <sample>.gz --outFileNameMatrix <sample>`|compute|
+|plotHeatmap||||
+|plotProfile||||
 
 
 
