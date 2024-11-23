@@ -48,8 +48,6 @@ For proteins whose motif-containing peaks overlap significantly with repeat elem
 #### 3. 富集分析工具
 可以直接使用一些现成的工具或软件包来进行重复序列富集分析：
 
-**BEDTools intersect：** 计算peaks与重复序列的重叠。  
-**HOMER：** 支持ChIP-seq peaks的重复序列富集分析（annotatePeaks.pl）。  
 **R/Bioconductor包：**  
 regioneR：支持基因组区域的随机化与富集分析。  
 LOLA：适用于区域与注释集合的比较分析。  
